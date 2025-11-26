@@ -11,7 +11,7 @@ private:
     string first_name;
     string last_name;
     string phone_number;
-    string seat;           
+    Seat seat;           
     int id_number;         
 
 public:
@@ -43,3 +43,4 @@ public:
 };
 
 #endif
+
