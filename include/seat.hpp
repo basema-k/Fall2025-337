@@ -1,5 +1,5 @@
-#ifndef SEAT
-#define SEAT
+#ifndef SEAT_HPP
+#define SEAT_HPP
 
 #include <string>
 using namespace std;
@@ -28,3 +28,4 @@ public:
 };
 
 #endif
+
