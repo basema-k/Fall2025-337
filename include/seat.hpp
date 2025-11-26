@@ -13,8 +13,7 @@ private:
 public:
     // constructors
     Seat();
-    Seat(int r, char l, char s);
-    Seat(const string& seatStatus);   
+    Seat(int r, char l, char s);   
 
     // getters
     int getRow() const;
@@ -29,5 +28,6 @@ public:
 };
 
 #endif
+
 
 
