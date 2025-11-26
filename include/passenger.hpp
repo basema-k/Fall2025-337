@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "Seat.hPP"
+#include "Seat.hpp"
 
 class Passenger {
 private:
@@ -45,6 +45,7 @@ public:
 };
 
 #endif
+
 
 
 
