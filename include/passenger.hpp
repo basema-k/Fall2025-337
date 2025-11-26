@@ -5,6 +5,8 @@
 #include <iostream>
 using namespace std;
 
+#include "Seat.h"
+
 class Passenger {
 private:
     string flight_id;      
@@ -21,7 +23,7 @@ public:
               const string& fn,
               const string& ln,
               const string& phone,
-              const string& seat_value,
+              const Seat& seat,
               int id);
 
     // setters
@@ -29,7 +31,7 @@ public:
     void setFirstName(const string& fn);
     void setLastName(const string& ln);
     void setPhoneNumber(const string& phone);
-    void setSeat(const string& seat_value);
+    void setSeat(const Seat& s);
     void setIDNumber(int id);
 
     // getters
@@ -37,10 +39,11 @@ public:
     string getFirstName() const;
     string getLastName() const;
     string getPhoneNumber() const;
-    string getSeat() const;
+    Seat getSeat() const;;
     int getIDNumber() const;
 
 };
 
 #endif
+
 
