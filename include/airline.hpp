@@ -4,8 +4,8 @@
 #include "flight.hpp"
 #include <vector>
 #include <string>
-using std::string;
-using std::vector;
+using namespace std;
+
 
 class airline
 {
