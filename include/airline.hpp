@@ -1,7 +1,7 @@
 #ifndef AIRLINE_HPP
 #define AIRLINE_HPP
 
-#include "flight.hpp"
+#include "flight_class.hpp"
 #include <vector>
 #include <string>
 using namespace std;
@@ -15,7 +15,8 @@ class airline
 
     public:
     airline();
-    void add_flight(const Flight& f);
+    void add_flight(string ID);
+    void remove_flight();
 
     // Getters
     const vector<Flight>& get_flights() const;
