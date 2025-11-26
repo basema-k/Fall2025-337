@@ -2,3 +2,9 @@ WJ1145   Calgary   Paris     24  6
 WJ2145   Calgary   Edmonton  24  6
 WJ3145   Edmonton  London    24  6
 WJ4145   Calgary   Boston    24  6
+WJ5145   Toronto   Vancouver 20  6
+WJ6145   Vancouver Tokyo     30  9
+WJ7145   Montreal  NewYork   15  4
+WJ8145   Ottawa    Chicago   18  4
+WJ9145   Halifax   London    22  6
+WJ1045   Winnipeg  Orlando   24  6

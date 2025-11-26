@@ -4,3 +4,7 @@ WJ1145    Jim    Li       403-003-0000      23C 10002
 WJ2145    Allen  Wright   408-100-0000      6A  10000
 WJ2145    Bill   Ross     408-020-0000      5B  10001
 WJ2145    Judy   Wright   408-003-0000      23C 10002
+WJ3145    Sarah  Connor   403-555-1234      12A 10003
+WJ3145    John   Smith    403-555-5678      12B 10004
+WJ4145    Alice  Wonder   403-555-9012      1F  10005
+WJ4145    Bob    Builder  403-555-3456      2C  10006
