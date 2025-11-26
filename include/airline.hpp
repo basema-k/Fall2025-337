@@ -15,8 +15,8 @@ class airline
 
     public:
     airline();
-    void add_flight(string ID);
-    void remove_flight();
+    void add_flight(const Flight& f);
+    void remove_flight(const string& ID);
 
     // Getters
     const vector<Flight>& get_flights() const;
