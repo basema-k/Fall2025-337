@@ -1,7 +1,7 @@
 #include <string>
 using namespace std;
 
-include "Seat.h"
+include "Seat.hpp"
 
 Seat::Seat(int r, char l, char s): row(r), letter(l), status(s)
 {
@@ -30,6 +30,7 @@ void Seat::setSeatStatus(char s)
 {
 	status = s;
 }
+
 
 
 
