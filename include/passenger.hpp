@@ -1,5 +1,5 @@
-#ifndef PASSENGERS
-#define PASSENGERS
+#ifndef PASSENGERS.hpp
+#define PASSENGERS.hpp
 
 #include <string>
 #include <iostream>
@@ -45,5 +45,6 @@ public:
 };
 
 #endif
+
 
 
