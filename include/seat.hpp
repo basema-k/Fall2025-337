@@ -8,24 +8,26 @@ class Seat {
 private:
     int row;
     char letter;
+    char status;
 
 public:
     // constructors
     Seat();
-    Seat(int r, char l);
-    Seat(const string& seatStr);   
+    Seat(int r, char l, char s);
+    Seat(const string& seatStatus);   
 
     // getters
     int getRow() const;
     char getLetter() const;
-    string getSeatString() const;
+    string getSeatStatus() const;
 
     // setters
     void setRow(int r);
     void setLetter(char l);
-    void setSeat(const string& seatStr);
+    void setSeatStatus(const string& seatStr);
 
 };
 
 #endif
+
 
