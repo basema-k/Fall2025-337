@@ -11,10 +11,11 @@ class airline
 {
     private:
     vector<Flight> flights;
-    string name;
+    string airline_name;
 
     public:
     airline();
+    airline(const string& name);
     void add_flight(const Flight& f);
     void remove_flight(const string& ID);
 
