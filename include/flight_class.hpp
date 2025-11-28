@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <iostream>
 using namespace std;
 
 class Seat;
@@ -14,6 +15,8 @@ class Flight
 public:
     Flight(string ID, Route* ROUTE, int ROWS, int SEATS_PER_ROW);
     void addPassenger(Passenger* p);
+    void updateSeatMap(Seat* selectedSeat);
+    void showSeatMap() const;
 
     string getID() const;
     int getRows() const;
