@@ -1,5 +1,5 @@
 #include "../include/flight_class.hpp"
-#include "../include/Seat.hpp"
+#include "../include/seat.hpp"
 #include "../include/passenger.hpp"
 #include <iostream>
 #include <vector>
