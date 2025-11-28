@@ -1,4 +1,4 @@
-#include "../include/airline.hpp"
+#include "airline.hpp"
 #include <vector>
 #include <string>
 #include <iostream>
