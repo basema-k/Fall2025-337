@@ -1,4 +1,6 @@
 #include "../include/flight_class.hpp"
+#include "../include/Seat.hpp"
+#include "../include/passenger.hpp"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -39,15 +41,16 @@ const Route* Flight::getRoute() const{
 }
 
 void Flight::updateSeatMap(Seat* selectedSeat){
-    for(int i = 0;i<seats.size();i++){
-        if((seats.at(i)->getRow() == selectedSeat->getRow()) && (seats.at(i)->getLetter() == selectedSeat->getLetter())) {
-            seats.at(i)->setSeatStatus('O');
+    for(int i = 0; i < seats.size(); i++){
+        if((seats.at(i)->getRow() == selectedSeat->getRow()) && 
+           (seats.at(i)->getLetter() == selectedSeat->getLetter())) {
+            seats.at(i)->setStatus('O');  // Changed from setSeatStatus
         }
     }
 }
 
 void Flight::showSeatMap() const {
-    stdcout << "Aircraft Seat Map for flight " << id << endl;
+    cout << "Aircraft Seat Map for flight " << id << endl;
     
     // Print column headers (seat letters)
     cout << "    ";
@@ -76,13 +79,13 @@ void Flight::showSeatMap() const {
         // Print seats for this row
         for(int col = 0; col < seats_per_row; col++) {
             int seatIndex = row * seats_per_row + col;
-            string status = seats[seatIndex]->getSeatStatus();
+            char status = seats[seatIndex]->getStatus();  // Changed to char and getStatus
             
             cout << "| ";
-            if(status == "O" || status == "X") {
-                cout << "X";  // Occupied seat
+            if(status == 'O' || status == 'X') {  // Compare with char, not string
+                cout << "X";
             } else {
-                cout << " ";  // Empty seat
+                cout << " ";
             }
             cout << " ";
         }

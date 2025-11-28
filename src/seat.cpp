@@ -23,7 +23,7 @@ char Seat::getLetter() const {
     return letter;
 }
 
-char Seat::getSeatStatus() const {
+char Seat::getStatus() const {  // Changed from getSeatStatus
     return status;
 }
 
@@ -36,6 +36,6 @@ void Seat::setLetter(char l) {
     letter = l;
 }
 
-void Seat::setSeatStatus(char s) {
+void Seat::setStatus(char s) {  // Changed from setSeatStatus
     status = s;
 }

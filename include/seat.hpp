@@ -11,22 +11,19 @@ private:
     char status;    // F : free, O : occupied
 
 public:
-    // default constructor
-    Seat() : row(0), letter('A'), status('F') {}
+    // Constructors
+    Seat();
+    Seat(int r, char l, char s = 'F');
 
-    // general constructor 
-    Seat(int r, char l, char s = 'F')
-        : row(r), letter(l), status(s) {}
+    // Getters
+    int getRow() const;
+    char getLetter() const;
+    char getStatus() const;
 
-    // getters
-    int getRow() const {return row;}
-    char getLetter() const {return letter;}
-    char getStatus() const {return status;}
-
-    // setters
-    void setRow(int r) {row = r;}
-    void setLetter(char l) {letter = l;}
-    void setStatus(char s) {status = s;}
+    // Setters
+    void setRow(int r);
+    void setLetter(char l);
+    void setStatus(char s);
 };
 
 #endif
