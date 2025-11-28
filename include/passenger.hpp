@@ -1,5 +1,5 @@
-#ifndef PASSENGERS_HPP
-#define PASSENGERS_HPP
+#ifndef PASSENGER_HPP
+#define PASSENGER_HPP
 
 #include <string>
 #include <iostream>
@@ -9,21 +9,23 @@ using namespace std;
 
 class Passenger {
 private:
-    string flight_id;      
+    string flight_id;     
     string first_name;
     string last_name;
     string phone_number;
-    Seat seat;           
-    int id_number;         
+    Seat seat;            // 'Seat' object
+    int id_number;        
 
 public:
-    // constructors
+    // default constructor
     Passenger();
+
+    // general constructor (use when reading from text file)
     Passenger(const string& flight,
               const string& fn,
               const string& ln,
               const string& phone,
-              const Seat& seat,
+              const Seat& seatObj,
               int id);
 
     // setters
@@ -39,15 +41,8 @@ public:
     string getFirstName() const;
     string getLastName() const;
     string getPhoneNumber() const;
-    Seat getSeat() const;;
+    Seat getSeat() const;
     int getIDNumber() const;
-
 };
 
 #endif
-
-
-
-
-
-
