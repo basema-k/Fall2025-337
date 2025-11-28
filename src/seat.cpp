@@ -1,4 +1,4 @@
-#include "../include/Seat.hpp"
+#include "../include/seat.hpp"
 #include <string>
 using namespace std;
 
@@ -23,7 +23,7 @@ char Seat::getLetter() const {
     return letter;
 }
 
-char Seat::getStatus() const {  // Changed from getSeatStatus
+char Seat::getStatus() const {
     return status;
 }
 
@@ -36,6 +36,6 @@ void Seat::setLetter(char l) {
     letter = l;
 }
 
-void Seat::setStatus(char s) {  // Changed from setSeatStatus
+void Seat::setStatus(char s) {
     status = s;
 }

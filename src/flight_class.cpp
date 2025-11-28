@@ -1,5 +1,5 @@
 #include "../include/flight_class.hpp"
-#include "../include/Seat.hpp"
+#include "../include/seat.hpp"
 #include "../include/passenger.hpp"
 #include <iostream>
 #include <vector>
@@ -40,11 +40,11 @@ const Route* Flight::getRoute() const{
     return route;
 }
 
-void Flight::updateSeatMap(Seat* selectedSeat){
+void Flight::updateSeatMap(const Seat* selectedSeat){
     for(int i = 0; i < seats.size(); i++){
         if((seats.at(i)->getRow() == selectedSeat->getRow()) && 
            (seats.at(i)->getLetter() == selectedSeat->getLetter())) {
-            seats.at(i)->setStatus('O');  // Changed from setSeatStatus
+            seats.at(i)->setStatus('O');
         }
     }
 }

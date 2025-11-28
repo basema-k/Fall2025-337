@@ -69,8 +69,8 @@ string Passenger::getPhoneNumber() const {
     return phone_number;
 }
 
-Seat Passenger::getSeat() const {
-    return seat;
+const Seat* Passenger::getSeat() const {
+    return &seat;
 }
 
 int Passenger::getIDNumber() const {
