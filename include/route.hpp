@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-class route
+class Route
 {
 
 private:
@@ -13,9 +13,8 @@ private:
 
 public:
 
-    route(const string& src, const string& dest);
+    Route(const string& src, const string& dest);
     
-    // Getters
     string getSource() const; 
     string getDestination() const;
 };

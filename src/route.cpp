@@ -4,16 +4,14 @@
 #include <iostream>
 using namespace std;
 
-route::route(const string& src, const string& dest){
-    route::source = src;
-    route::destination = dest;
-
+Route::Route(const string& src, const string& dest)
+    : source(src), destination(dest) {
 }
 
-string route::getSource() const{
+string Route::getSource() const{ 
     return source;
 }
     
-string route::getDestination() const{
+string Route::getDestination() const{
     return destination;
 }

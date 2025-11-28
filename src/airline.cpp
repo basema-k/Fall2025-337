@@ -2,23 +2,22 @@
 #include <vector>
 #include <string>
 #include <iostream>
+#include <cstddef> 
+
 using namespace std;
 
+airline::airline(): airline_name(""){
 
-
-airline::airline(){
-    airline_name = "";
 }
 
-airline::airline(const string& name){
-    airline_name = name;
-} 
+airline::airline(const string& name):airline_name(name){
 
+}
 
 void airline::add_flight(const Flight& f){
 
     string airline_id = f.getID();
-    for (int i = 0; i < flights.size(); i++){
+    for (size_t i = 0; i < flights.size(); i++){
         string old_flights = flights[i].getID();
         if (airline_id == old_flights){
             return;
@@ -28,7 +27,7 @@ void airline::add_flight(const Flight& f){
 }
 
 void airline::remove_flight(const string& ID){
-    for (int i = 0; i < flights.size(); i++){
+    for (size_t i = 0; i < flights.size(); i++){
         if (flights[i].getID() == ID){
              flights.erase(flights.begin() + i);
             return;

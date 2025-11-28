@@ -41,7 +41,7 @@ public:
     string getFirstName() const;
     string getLastName() const;
     string getPhoneNumber() const;
-    Seat getSeat() const;
+    const Seat* getSeat() const;
     int getIDNumber() const;
 };
 
