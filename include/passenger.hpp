@@ -49,7 +49,7 @@ public:
     static vector<Passenger*> inputPassengers();
     static void displayPassengers(vector<Passenger*>& passengers);
     void addPassenger(vector<Passenger*>& passengers, const string& flightID);
-    void deletePassenger(const vector<Passenger*>& passengers, const string& flightID);
+    void deletePassenger(vector<Passenger*>& passengers, const string& flightID);
 
 };
 

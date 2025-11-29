@@ -174,8 +174,29 @@ void Passenger::addPassenger(vector<Passenger*>& passengers, const string& fligh
 
 }
 
-void Passenger::deletePassenger(const vector<Passenger*>& passengers, const string& flightID){
+void Passenger::deletePassenger(vector<Passenger*>& passengers, const string& flightID){
+    int removeID;
+    cout << "Enter the passenger ID to remove: ";
+    cin >> removeID;
 
+    int found = 0;
+
+    for(int i = 0; i < passengers.size(); i++){
+        Passenger* p = passengers[i];
+
+        if(p->getFlightID() == flightID && p->getIDNumber() == removeID){
+            cout << "Removing pasenger: " << p->getFirstName() << " " << p->getLastName() << endl;
+            delete p;
+            passengers.erase(passengers.begin()+i);
+
+            cout << "Passenger removed!";
+            found = 1;
+            break;
+        }
+    }
+    if(found == 0){
+        cout << "Passenger ID not found on this flight";
+    }
 }
 
 
