@@ -21,11 +21,15 @@ class airline
     void add_flight(const Flight& f);
     void remove_flight(const string& ID);
     void loadFlights(const string& filename);
+    void displayFlights() const;
 
     // Getters
     const vector<Flight>& get_flights() const;
     const string& get_name() const;
 
 };
+
+static int safe_stoi(const string& field);
+
 
 #endif
