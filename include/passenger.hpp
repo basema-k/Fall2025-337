@@ -2,7 +2,8 @@
 #define PASSENGER_HPP
 
 #include <string>
-#include <iostream>
+#include <fstream>
+#include <vector>
 using namespace std;
 
 #include "seat.hpp"
@@ -43,6 +44,13 @@ public:
     string getPhoneNumber() const;
     const Seat* getSeat() const;
     int getIDNumber() const;
+
+    // member functions
+    static vector<Passenger*> inputPassengers();
+    static void displayPassengers(vector<Passenger*>& passengers);
+    void addPassenger(vector<Passenger*>& passengers, const string& flightID);
+    void deletePassenger(const vector<Passenger*>& passengers, const string& flightID);
+
 };
 
 #endif
