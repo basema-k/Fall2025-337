@@ -10,7 +10,7 @@
 using namespace std;
 
 
-Flight::Flight(string ID, Route* ROUTE, int ROWS, int SEATS_PER_ROW):id(ID),
+Flight::Flight(string ID, const Route& ROUTE, int ROWS, int SEATS_PER_ROW):id(ID),
 route(ROUTE),rows(ROWS),seats_per_row(SEATS_PER_ROW) {
     char seatLetters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
     
@@ -40,7 +40,7 @@ string Flight::getID() const{
 }
 
 const Route* Flight::getRoute() const{
-    return route;
+    return &route;
 }
 
 void Flight::updateSeatMap(const Seat* selectedSeat){
@@ -110,12 +110,10 @@ Flight::~Flight() {
 }
 
 void Flight::displayPassengers() const {
-    cout << "\nPassenger List (Flight:" << id << " from ";
-    if(route) {
-        cout << route->getSource() << " to " << route->getDestination();
-    }
-    cout << ")\n" << endl;
-    
+    cout << "\nPassenger List (Flight:" << id << " from "
+    << route.getSource() << " to " << route.getDestination()
+    << ")\n";
+        
     cout << "First Name    Last Name     Phone            Row  Seat  ID" << endl;
     cout << "------------------------------------------------------------------------" << endl;
     
