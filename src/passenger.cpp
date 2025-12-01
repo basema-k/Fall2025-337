@@ -81,7 +81,7 @@ int Passenger::getIDNumber() const {
 vector<Passenger*> Passenger::inputPassengers(){
     vector<Passenger*> passengers;
     
-    ifstream in_stream("passengers.txt");
+    ifstream in_stream("input/passengers.txt");
     if(in_stream.fail()){
         cout<<"Error opening the passenger.txt file..."<<endl;
         return passengers; // returns empty vector if file fails to open
