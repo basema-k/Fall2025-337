@@ -54,8 +54,6 @@ void Flight::updateSeatMap(const Seat* selectedSeat){
 
 void Flight::showSeatMap() const {
 
-    
-    // Print column headers (seat letters)
     cout << "    ";
     char seatLetters[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'};
     for(int col = 0; col < seats_per_row; col++) {
@@ -63,29 +61,25 @@ void Flight::showSeatMap() const {
     }
     cout << endl;
     
-    // Print separator line
     cout << "  +";
     for(int col = 0; col < seats_per_row; col++) {
         cout << "---+";
     }
     cout << endl;
     
-    // Print each row
     for(int row = 0; row < rows; row++) {
-        // Print row number
         if(row < 10) {
             cout << row << " ";
         } else {
             cout << row;
         }
         
-        // Print seats for this row
         for(int col = 0; col < seats_per_row; col++) {
             int seatIndex = row * seats_per_row + col;
-            char status = seats[seatIndex]->getStatus();  // Changed to char and getStatus
+            char status = seats[seatIndex]->getStatus();
             
             cout << "| ";
-            if(status == 'O' || status == 'X') {  // Compare with char, not string
+            if(status == 'O' || status == 'X') {
                 cout << "X";
             } else {
                 cout << " ";
@@ -94,7 +88,6 @@ void Flight::showSeatMap() const {
         }
         cout << "|" << endl;
         
-        // Print separator line
         cout << "  +";
         for(int col = 0; col < seats_per_row; col++) {
             cout << "---+";
@@ -146,7 +139,6 @@ const vector<Passenger*>& Flight::getPassengers() const {
     return passengers;
 }
 
-// Copy constructor
 Flight::Flight(const Flight& other) 
     : id(other.id),
       route(other.route),
@@ -154,7 +146,6 @@ Flight::Flight(const Flight& other)
       seats_per_row(other.seats_per_row),
       passengers(other.passengers)
 {
-    // Deep copy the seats vector
     seats.clear();
     for(size_t i = 0; i < other.seats.size(); i++) {
         if(other.seats[i] != nullptr) {
@@ -165,23 +156,19 @@ Flight::Flight(const Flight& other)
     }
 }
 
-// Copy assignment operator
 Flight& Flight::operator=(const Flight& other) {
     if(this != &other) {
-        // Delete old seats
         for(size_t i = 0; i < seats.size(); i++) {
             delete seats[i];
         }
         seats.clear();
         
-        // Copy data
         id = other.id;
         route = other.route;
         rows = other.rows;
         seats_per_row = other.seats_per_row;
         passengers = other.passengers;
         
-        // Deep copy seats
         for(size_t i = 0; i < other.seats.size(); i++) {
             if(other.seats[i] != nullptr) {
                 seats.push_back(new Seat(*other.seats[i]));

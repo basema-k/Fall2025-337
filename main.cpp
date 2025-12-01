@@ -49,6 +49,8 @@ int main() {
                     cout << "You have selected flight " << currentFlight->getID() 
                          << " from " << r->getSource() 
                          << " to " << r->getDestination() << "." << endl;
+                } else {
+                    cout << "Invalid flight selection. Please try again." << endl;
                 }
                 break;
             }
@@ -56,7 +58,6 @@ int main() {
                 if(currentFlight == nullptr) {
                     cout << "Please select a flight first (Option 1)." << endl;
                 } else {
-                    cout << "Aircraft Seat Map for flight " << currentFlight->getID() << endl;
                     currentFlight->showSeatMap(); 
                 }
                 break;
@@ -89,11 +90,43 @@ int main() {
                     cout << "Enter the passenger's desired seat: ";
                     cin >> seatChar;
 
+                    if(row < 0 || row >= currentFlight->getRows()) {
+                        cout << "Error: Invalid row number. Must be between 0 and " << (currentFlight->getRows() - 1) << "." << endl;
+                        break;
+                    }
+
+                    if(seatChar < 'A' || seatChar >= ('A' + currentFlight->getSeatsPerRow())) {
+                        cout << "Error: Invalid seat letter. Must be between A and " << (char)('A' + currentFlight->getSeatsPerRow() - 1) << "." << endl;
+                        break;
+                    }
+
+                    const vector<Passenger*>& existingPassengers = currentFlight->getPassengers();
+                    bool duplicateID = false;
+                    for(const Passenger* p : existingPassengers) {
+                        if(p->getIDNumber() == id) {
+                            cout << "Error: Passenger ID already exists on this flight." << endl;
+                            duplicateID = true;
+                            break;
+                        }
+                    }
+                    if(duplicateID) break;
+
+                    bool seatTaken = false;
+                    for(const Passenger* p : existingPassengers) {
+                        if(p->getSeat()->getRow() == row && p->getSeat()->getLetter() == seatChar) {
+                            cout << "Error: Seat already occupied." << endl;
+                            seatTaken = true;
+                            break;
+                        }
+                    }
+                    if(seatTaken) break;
+
                     Seat s(row, seatChar);
                     Passenger* newP = new Passenger(currentFlight->getID(), fname, lname, phone, s, id);
                     
                     currentFlight->addPassenger(newP); 
                     currentFlight->updateSeatMap(&s);
+                    cout << "Passenger added successfully." << endl;
                 }
                 break;
             }
@@ -106,14 +139,20 @@ int main() {
                     cin >> id;
                     
                     vector<Passenger*>& passengers = const_cast<vector<Passenger*>&>(currentFlight->getPassengers());
+                    bool found = false;
                     
                     for(size_t i = 0; i < passengers.size(); i++) {
                         if(passengers[i]->getIDNumber() == id) {
                             delete passengers[i];
                             passengers.erase(passengers.begin() + i);
                             cout << "Passenger removed successfully." << endl;
+                            found = true;
                             break;
                         }
+                    }
+                    
+                    if(!found) {
+                        cout << "Error: Passenger ID not found on this flight." << endl;
                     }
                 }
                 break;

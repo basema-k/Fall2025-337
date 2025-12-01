@@ -5,16 +5,14 @@
 #include <sstream>
 using namespace std;
 
-// deafult constructor
 Passenger::Passenger()
     : flight_id(""),
       first_name(""),
       last_name(""),
       phone_number(""),
-      seat(),              // call to default constructor for class "Seat"
+      seat(),
       id_number(0) {}
 
-// general constructor
 Passenger::Passenger(const string& flight,
                      const string& fn,
                      const string& ln,
@@ -28,7 +26,6 @@ Passenger::Passenger(const string& flight,
                     seat(seatObj),
                     id_number(id) {}
 
-// setters
 void Passenger::setFlightID(const string& id) {
     flight_id = id;
 }
@@ -84,19 +81,19 @@ vector<Passenger*> Passenger::inputPassengers(){
     ifstream in_stream("passengers.txt");
     if(in_stream.fail()){
         cout<<"Error opening the passenger.txt file..."<<endl;
-        return passengers; // returns empty vector if file fails to open
+        return passengers;
     }
     
-    string line; // create a string to store each full line read from file
+    string line;
 
-    while(getline(in_stream, line)){ // read entire line from file, and store into 'line'
+    while(getline(in_stream, line)){
         if(line.empty())
-            continue; // skips blank lines
+            continue;
         string flightid, first, last, phone, seat;
         int idnum;
         stringstream ss(line); 
 
-        ss >> flightid >> first >> last >> phone >> seat >> idnum; // reads text, attributes first string up till whitespace to flightid, moves to next element until all elements are accounted for
+        ss >> flightid >> first >> last >> phone >> seat >> idnum;
         if (ss.fail()) { 
             cout << "Skipping invalid line: " << line << endl;
             continue;
@@ -104,11 +101,11 @@ vector<Passenger*> Passenger::inputPassengers(){
         Seat s;
 
         if (seat.length() >= 2) {
-            int row = stoi(seat.substr(0, seat.length() - 1)); // get integer portion of seat string (string to integer)
-            char letter = seat.back(); // get character portion of seat string
+            int row = stoi(seat.substr(0, seat.length() - 1));
+            char letter = seat.back();
             s.setRow(row);
             s.setLetter(letter);
-            s.setStatus('O'); // seat will now be occupied
+            s.setStatus('O');
         }
 
         Passenger* p = new Passenger(flightid, first, last, phone, s, idnum);
