@@ -53,7 +53,7 @@ void Flight::updateSeatMap(const Seat* selectedSeat){
 }
 
 void Flight::showSeatMap() const {
-    cout << "Aircraft Seat Map for flight " << id << endl;
+
     
     // Print column headers (seat letters)
     cout << "    ";
@@ -140,4 +140,55 @@ void Flight::displayPassengers() const {
              << passengers[i]->getIDNumber() << endl;
     }
     cout << "------------------------------------------------------------------------" << endl;
+}
+
+const vector<Passenger*>& Flight::getPassengers() const {
+    return passengers;
+}
+
+// Copy constructor
+Flight::Flight(const Flight& other) 
+    : id(other.id),
+      route(other.route),
+      rows(other.rows),
+      seats_per_row(other.seats_per_row),
+      passengers(other.passengers)
+{
+    // Deep copy the seats vector
+    seats.clear();
+    for(size_t i = 0; i < other.seats.size(); i++) {
+        if(other.seats[i] != nullptr) {
+            seats.push_back(new Seat(*other.seats[i]));
+        } else {
+            seats.push_back(nullptr);
+        }
+    }
+}
+
+// Copy assignment operator
+Flight& Flight::operator=(const Flight& other) {
+    if(this != &other) {
+        // Delete old seats
+        for(size_t i = 0; i < seats.size(); i++) {
+            delete seats[i];
+        }
+        seats.clear();
+        
+        // Copy data
+        id = other.id;
+        route = other.route;
+        rows = other.rows;
+        seats_per_row = other.seats_per_row;
+        passengers = other.passengers;
+        
+        // Deep copy seats
+        for(size_t i = 0; i < other.seats.size(); i++) {
+            if(other.seats[i] != nullptr) {
+                seats.push_back(new Seat(*other.seats[i]));
+            } else {
+                seats.push_back(nullptr);
+            }
+        }
+    }
+    return *this;
 }

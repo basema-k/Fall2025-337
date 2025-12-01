@@ -118,7 +118,7 @@ vector<Passenger*> Passenger::inputPassengers(){
 }
 
 void Passenger::displayPassengers(vector<Passenger*>& passengers){
-    for (int i = 0; i < passengers.size(); i++) {
+    for (size_t i = 0; i < passengers.size(); i++) {
         const Passenger* p = passengers[i];
         const Seat* s = p->getSeat();
 
@@ -150,7 +150,7 @@ void Passenger::addPassenger(vector<Passenger*>& passengers, const string& fligh
     cout << "Enter the passenger's desired seat: " << endl;
     cin >> seat;
 
-    for (int i = 0; i < passengers.size(); i++) {
+    for (size_t i = 0; i < passengers.size(); i++) {
         const Passenger* p = passengers[i];
         const Seat* s = p->getSeat();
 
@@ -181,7 +181,7 @@ void Passenger::deletePassenger(vector<Passenger*>& passengers, const string& fl
 
     int found = 0;
 
-    for(int i = 0; i < passengers.size(); i++){
+    for(size_t i = 0; i < passengers.size(); i++){
         Passenger* p = passengers[i];
 
         if(p->getFlightID() == flightID && p->getIDNumber() == removeID){

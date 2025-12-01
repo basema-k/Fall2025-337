@@ -29,7 +29,4 @@ class airline
 
 };
 
-static int safe_stoi(const string& field);
-
-
 #endif

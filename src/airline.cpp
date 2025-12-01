@@ -19,7 +19,6 @@ airline::airline(const string& name):airline_name(name){
 }
 
 void airline::add_flight(const Flight& f){
-
     string airline_id = f.getID();
     for (size_t i = 0; i < flights.size(); i++){
         string old_flights = flights[i].getID();
@@ -49,29 +48,19 @@ const string& airline::get_name() const{
     return airline_name;
 }
 
-static int safe_stoi(const string& field){    
-    try {
-        size_t pos = 0;
-        int v = stoi(field, &pos);
-        if (pos != field.size()) return 0;
-        return v;
-    }catch(...){
-        return 0;
-    }
-}
 
 void airline::loadFlights(const string& filename){
     ifstream data(filename); 
     if (!data.is_open()) {
-        cerr << "Error: cannot open file '" << filename << "'." << endl;
         return;
     }
 
     string line;
 
     while (getline(data,line)) {
-        if (line.empty()) continue; // Skip blank lines
-        if (!line.empty() && line.back() == '\r') line.pop_back();
+        if (line.empty()) continue;
+        if (!line.empty() && line.back() == '\r')
+            line.pop_back();
 
         stringstream ss(line);
         string field;
@@ -79,27 +68,43 @@ void airline::loadFlights(const string& filename){
         int rows = 0, seats = 0;
         int col = 0;
 
-        while(getline(ss, field, ',')){
-        switch(col){
-            case 0: id = field; break;
-            case 1: src = field; break;            
-            case 2: dest = field; break;            
-            case 3: rows = safe_stoi(field); break;            
-            case 4: seats = safe_stoi(field); break;
-            default: break;
+        while(getline(ss, field, ',')) {
+            size_t start = field.find_first_not_of(" \t");
+            size_t end = field.find_last_not_of(" \t\r\n");
+            if(start != string::npos && end != string::npos) {
+                field = field.substr(start, end - start + 1);
+            }
 
+            if(col == 0) id = field;
+            else if(col == 1) src = field;
+            else if(col == 2) dest = field;
+            else if(col == 3) rows = stoi(field);
+            else if(col == 4) seats = stoi(field);
+            col++;
         }
-        ++col;
-    }
 
-    if (col < 5) {
-        cerr << "Skipping malformed line: " << line << endl;
-        continue;
+        if(!id.empty() && !src.empty() && !dest.empty() && rows > 0 && seats > 0) {
+            Route r(src, dest);
+            Flight f(id, r, rows, seats);
+            add_flight(f);
+        }
     }
-      
-    Route r(src, dest);
-    Flight f(id, r, rows, seats);
-    add_flight(f);
+    
+    data.close();
+}
+
+void airline::displayFlights() const {
+    cout << "Here is the list of available flights. Please select one:" << endl;
+    for(size_t i = 0; i < flights.size(); i++) {
+        const Flight& f = flights[i];
+        const Route* r = f.getRoute();
+        
+        cout << (i + 1) << ". " 
+             << left << setw(10) << f.getID() 
+             << setw(15) << r->getSource() 
+             << setw(15) << r->getDestination() 
+             << setw(5) << f.getRows() 
+             << setw(5) << f.getSeatsPerRow() << endl;
     }
 }
 
