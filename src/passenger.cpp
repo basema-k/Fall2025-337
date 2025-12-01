@@ -117,12 +117,18 @@ vector<Passenger*> Passenger::inputPassengers(){
     return passengers;
 }
 
-void Passenger::displayPassengers(vector<Passenger*>& passengers){
+void Passenger::displayPassengers(const vector<Passenger*>& passengers){
+    if (passengers.empty()) {
+        cout << "No passengers to display." << endl;
+        return;
+    }
+    
+    cout << "First Name" << "Last Name" << "Phone" << "Row" << "Seat" << "ID" << endl;
+
     for (int i = 0; i < passengers.size(); i++) {
         const Passenger* p = passengers[i];
         const Seat* s = p->getSeat();
 
-        cout << "First Name" << "Last Name" << "Phone" << "Row" << "Seat" << "ID" << endl;
         cout << p->getFirstName() << p->getLastName() << p->getPhoneNumber() << s->getRow() << s->getLetter() << p->getIDNumber() << endl;
     }
 }
@@ -150,18 +156,20 @@ void Passenger::addPassenger(vector<Passenger*>& passengers, const string& fligh
     cout << "Enter the passenger's desired seat: " << endl;
     cin >> seat;
 
+    seat = toupper(seat);
+
     for (int i = 0; i < passengers.size(); i++) {
         const Passenger* p = passengers[i];
         const Seat* s = p->getSeat();
 
         if(p->getFlightID() == flightID){
             if(p->getIDNumber() == idnum){
-                cout << "Error: ID number already exists on this flight.";
+                cout << "Error: ID number already exists on this flight." << endl;
                 return;
             }
         
             if(s->getRow() == row && s->getLetter() == seat){
-                cout << "Error: This seat is already taken.";
+                cout << "Error: This seat is already taken." << endl;
                 return;
             }
         }
@@ -179,7 +187,6 @@ void Passenger::deletePassenger(vector<Passenger*>& passengers, const string& fl
     cout << "Enter the passenger ID to remove: ";
     cin >> removeID;
 
-    int found = 0;
 
     for(int i = 0; i < passengers.size(); i++){
         Passenger* p = passengers[i];
@@ -189,14 +196,13 @@ void Passenger::deletePassenger(vector<Passenger*>& passengers, const string& fl
             delete p;
             passengers.erase(passengers.begin()+i);
 
-            cout << "Passenger removed!";
-            found = 1;
-            break;
+            cout << "Passenger removed!" << endl;
+            return;
         }
     }
-    if(found == 0){
-        cout << "Passenger ID not found on this flight";
-    }
+    cout << "Passenger ID not found on this flight";
+    return;
+
 }
 
 

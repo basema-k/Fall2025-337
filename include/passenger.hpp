@@ -47,7 +47,7 @@ public:
 
     // member functions
     static vector<Passenger*> inputPassengers();
-    static void displayPassengers(vector<Passenger*>& passengers);
+    static void displayPassengers(const vector<Passenger*>& passengers);
     void addPassenger(vector<Passenger*>& passengers, const string& flightID);
     void deletePassenger(vector<Passenger*>& passengers, const string& flightID);
 
