@@ -114,7 +114,7 @@ vector<Passenger*> Passenger::inputPassengers(){
     return passengers;
 }
 
-void Passenger::displayPassengers(vector<Passenger*>& passengers){
+void Passenger::displayPassengers(const vector<Passenger*>& passengers){
     for (int i = 0; i < passengers.size(); i++) {
         const Passenger* p = passengers[i];
         const Seat* s = p->getSeat();
