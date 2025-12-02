@@ -114,64 +114,6 @@ vector<Passenger*> Passenger::inputPassengers(){
     return passengers;
 }
 
-void Passenger::displayPassengers(const vector<Passenger*>& passengers){
-    for (int i = 0; i < passengers.size(); i++) {
-        const Passenger* p = passengers[i];
-        const Seat* s = p->getSeat();
-
-        cout << p->getFirstName() << p->getLastName() << p->getPhoneNumber() << s->getRow() << s->getLetter() << p->getIDNumber() << endl;
-    }
-}
-
-void Passenger::addPassenger(vector<Passenger*>& passengers, const string& flightID){
-    string first, last, phone;
-    int idnum, row;
-    char seat;
-    
-    cout << "Please enter the passenger's id: " << endl;
-    cin >> idnum;
-    
-    cout << "Please enter the passenger's first name: " << endl;
-    cin >> first;
-    
-    cout << "Please enter the passenger's last name: " << endl;
-    cin >> last;
-    
-    cout << "Please enter the passenger's phone number: " << endl;
-    cin >> phone;
-    
-    cout << "Enter the passenger's desired row: " << endl;
-    cin >> row;
-    
-    cout << "Enter the passenger's desired seat: " << endl;
-    cin >> seat;
-
-    seat = toupper(seat);
-
-    for (size_t i = 0; i < passengers.size(); i++) {
-        const Passenger* p = passengers[i];
-        const Seat* s = p->getSeat();
-
-        if(p->getFlightID() == flightID){
-            if(p->getIDNumber() == idnum){
-                cout << "Error: ID number already exists on this flight." << endl;
-                return;
-            }
-        
-            if(s->getRow() == row && s->getLetter() == seat){
-                cout << "Error: This seat is already taken." << endl;
-                return;
-            }
-        }
-    }
-    Seat newSeat(row, seat, 'O');
-    Passenger* newPassenger = new Passenger(flightID, first, last, phone, newSeat, idnum);
-
-    passengers.push_back(newPassenger);
-    cout << "Passenger added successfully!" << endl;
-
-}
-
 void Passenger::deletePassenger(vector<Passenger*>& passengers, const string& flightID){
     int removeID;
     cout << "Enter the passenger ID to remove: ";
