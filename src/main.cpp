@@ -3,11 +3,11 @@
 #include <vector>
 #include <string>
 #include <iomanip>
-#include "include/flight_class.hpp"
-#include "include/passenger.hpp"
-#include "include/seat.hpp"
-#include "include/airline.hpp"
-#include "include/route.hpp"
+#include "../include/flight_class.hpp"
+#include "../include/passenger.hpp"
+#include "../include/seat.hpp"
+#include "../include/airline.hpp"
+#include "../include/route.hpp"
 
 using namespace std;
 
@@ -23,9 +23,9 @@ int main() {
 
     cout << "Version: 1.0\n";
     cout << "Term Project - Flight Management Program in C++\n";
-    cout << "Produced by: Ayman\n"; 
+    cout << "Produced by: Ayman, Basema and Azlan\n"; 
     cout << "Year: 2025\n";
-    cout << "\n<<< Press Return to Continue >>>\n" << endl;
+    cout << "\n<<< Press Return to Continue >>>";
     
     cin.get();
     

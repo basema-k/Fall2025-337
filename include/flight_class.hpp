@@ -1,5 +1,5 @@
-#ifndef flightClass_h
-#define flightClass_h
+#ifndef FLIGHT_CLASS_HPP
+#define FLIGHT_CLASS_HPP
 
 #include <vector>
 #include <string>
