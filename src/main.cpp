@@ -174,9 +174,9 @@ int main() {
 
         if(choice != 7) {
             cout << "\n<<< Press Return to Continue >>>";
-            cin.ignore(10000, '\n'); 
-            cin.get();
-        }
+            cin.ignore(1000, '\n');   
+            cin.get();               
+        }   
 
     } while(choice != 7);
 
